@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import { cn } from "@/utils/cn";
+import QueryClientProviderWrapper from "@/providers/QueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={cn("relative h-full font-sans antialiased", inter.className)}
+      >
+        <QueryClientProviderWrapper>
+          <main className="relative flex flex-col min-h-screen">
+            <Navbar />
+            <div className="flex-grow flex-1">{children}</div>
+          </main>
+        </QueryClientProviderWrapper>
+      </body>
     </html>
   );
 }
