@@ -39,14 +39,14 @@ const SearchBar: React.FC = () => {
   }, [movies]);
 
   return (
-    <div className="relative border border-white">
+    <div className="relative">
       <button onClick={() => setSearchOpen((prev) => !prev)}>
         <SearchIcon className="stroke-white" />
       </button>
       {isSearchOpen && (
         <div
           ref={ref}
-          className="fixed top-1/4  sm:left-1/2 left-[30%] p-4 bg-white shadow-lg"
+          className="sm:fixed absolute top-full  sm:left-1/2 -left-[10rem] p-4 bg-white shadow-lg"
         >
           <input
             value={searchValue}
